@@ -38,9 +38,25 @@ public class Customer {
 	@Column(name="c_email", unique = true)
 	private String email;
 	
-	@Column(name="c_address")
+	@Column(name="c_address_street_name")
 	@NotNull
-	private String c_address;
+	private String c_address_street_name;
+	
+	@Column(name="c_address_landmark")
+	@NotNull
+	private String c_address_landmark;
+	
+	@Column(name="c_address_district")
+	@NotNull
+	private String c_address_district;
+	
+	@Column(name="c_address_state")
+	@NotNull
+	private String c_address_state;
+	
+	@Column(name="c_address_pincode")
+	@NotNull
+	private int c_address_pincode;
 	
 	@Column(name="c_upi_id", unique = true)
 	private String c_upi_id;

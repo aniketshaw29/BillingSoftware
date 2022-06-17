@@ -50,14 +50,12 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public void deleteAllCustomer() {
-		// TODO Auto-generated method stub
-		
+		customerRepository.deleteAll();
 	}
 
 	@Override
 	public void deleteCustomerById(long id) {
-		// TODO Auto-generated method stub
-		
+		Customer customer = customerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Customer does'nt exist with id: " + id));
+		customerRepository.delete(customer);
 	}
-		
 }

@@ -26,9 +26,11 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public Customer getCustomerById(long id) throws ResourceNotFoundException{ //exception to be handled in controller
 		return customerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Customer does'nt exist with id: " + id));
-		//customerRepository.findById(id); 
-		//return customer object if found with that id
-		//else returning optional empty()
+		/*
+		 * customerRepository.findById(id); 
+		 * return customer object if found with that id
+		 * else returning optional empty()
+		*/
 	}
 
 	@Override
@@ -37,7 +39,12 @@ public class CustomerServiceImpl implements CustomerService{
 		oldCustomer.setC_name(updatedCustomer.getC_name());
 		oldCustomer.setC_phone(updatedCustomer.getC_phone());
 		oldCustomer.setEmail(updatedCustomer.getEmail());
-		//rest of attributes
+		oldCustomer.setC_address_street_name(updatedCustomer.getC_address_street_name());
+		oldCustomer.setC_address_landmark(updatedCustomer.getC_address_landmark());
+		oldCustomer.setC_address_district(updatedCustomer.getC_address_district());
+		oldCustomer.setC_address_state(updatedCustomer.getC_address_state());
+		oldCustomer.setC_address_pincode(updatedCustomer.getC_address_pincode());
+		oldCustomer.setC_upi_id(updatedCustomer.getC_upi_id());
 		return customerRepository.save(oldCustomer);
 	}
 
@@ -52,9 +59,5 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
+		
 }
-
-//working....

@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.billingsoftware.entity.OrderDetails;
 
 public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long> {
-
+	//custom method
+	//  with @query Annotation
 }

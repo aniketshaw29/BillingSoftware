@@ -3,12 +3,14 @@ package com.example.billingsoftware.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.billingsoftware.entity.Customer;
 import com.example.billingsoftware.exception.ResourceNotFoundException;
 import com.example.billingsoftware.repository.CustomerRepository;
 import com.example.billingsoftware.service.CustomerService;
 
+@Service
 public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	private CustomerRepository customerRepository;

@@ -17,40 +17,40 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long c_id;
 	
-	@Column(name="c_name")
+	@Column(name="c_name", length = 22)
 	@NotNull
 	@Size(min = 2,message = "Name should have atleast 2 character")
 	private String c_name;
 	
-	@Column(name="c_phone", unique = true)
+	@Column(name="c_phone", length = 10, unique = true)
 	@NotNull 
 	@Size(min = 10,message = "Phone no. must be of 10 numbers")
 	private long c_phone;
 	
-	@Column(name="c_email", unique = true)
+	@Column(name="c_email", length = 100, unique = true)
 	private String email;
 	
-	@Column(name="c_address_street_name")
+	@Column(name="c_address_street_name", length = 35)
 	@NotNull
 	private String c_address_street_name;
 	
-	@Column(name="c_address_landmark")
+	@Column(name="c_address_landmark", length = 22)
 	@NotNull
 	private String c_address_landmark;
 	
-	@Column(name="c_address_district")
+	@Column(name="c_address_district", length = 22)
 	@NotNull
 	private String c_address_district;
 	
-	@Column(name="c_address_state")
+	@Column(name="c_address_state", length = 22)
 	@NotNull
 	private String c_address_state;
 	
-	@Column(name="c_address_pincode")
+	@Column(name="c_address_pincode", length = 6)
 	@NotNull
 	private int c_address_pincode;
 	
-	@Column(name="c_upi_id", unique = true)
+	@Column(name="c_upi_id", length = 50,  unique = true)
 	private String c_upi_id;
 
 	public long getC_id() {

@@ -18,7 +18,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long p_id;
 	
-	@Column(name="p_name")
+	@Column(name="p_name", length = 30)
 	@NotNull
 	@Size(min = 2,message = "Product Name should have atleast 2 character")
 	//unique

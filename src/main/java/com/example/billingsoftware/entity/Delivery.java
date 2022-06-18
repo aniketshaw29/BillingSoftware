@@ -17,20 +17,20 @@ public class Delivery {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long d_id;
 	
-	@Column(name="d_name")
+	@Column(name="d_name", length = 22)
 	@NotNull
 	@Size(min = 2,message = "Name should have atleast 2 character")
 	private String d_name;
 	
-	@Column(name="d_phone", unique = true)
+	@Column(name="d_phone", length = 10, unique = true)
 	@NotNull 
 	@Size(min = 10,message = "Phone no. must be of 10 numbers")
 	private String d_phone;
 	
-	@Column(name="d_vehicleNumber", unique = true)
+	@Column(name="d_vehicleNumber", length = 12, unique = true)
 	private String d_vehicleNumber;
 	
-	@Column(name="d_aadharNumber", unique = true)
+	@Column(name="d_aadharNumber", length = 12, unique = true)
 	private long d_aadharNumber;
 
 	public long getD_id() {

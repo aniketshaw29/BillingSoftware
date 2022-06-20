@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="dilivery_billingsoftware")
-public class Delivery {
+public class DeliveryPersonnel {
 	@Id
 	@Column(name="d_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -73,7 +73,7 @@ public class Delivery {
 		this.d_aadharNumber = d_aadharNumber;
 	}
 
-	public Delivery(long d_id, @NotNull @Size(min = 2, message = "Name should have atleast 2 character") String d_name,
+	public DeliveryPersonnel(long d_id, @NotNull @Size(min = 2, message = "Name should have atleast 2 character") String d_name,
 			@NotNull @Size(min = 10, message = "Phone no. must be of 10 numbers") String d_phone,
 			String d_vehicleNumber, long d_aadharNumber) {
 		super();
@@ -84,7 +84,7 @@ public class Delivery {
 		this.d_aadharNumber = d_aadharNumber;
 	}
 
-	public Delivery() {
+	public DeliveryPersonnel() {
 		super();
 	}
 }

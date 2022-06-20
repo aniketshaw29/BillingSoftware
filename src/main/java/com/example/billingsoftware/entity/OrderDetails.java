@@ -33,8 +33,6 @@ public class OrderDetails {
 	
 	@OneToOne(targetEntity = Order.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "o_id")
-	//@JsonIgnoreProperties("orderDetails")
-	@Column(name="od_o_id")
 	private long od_o_id;
 
 	public long getOd_id() {

@@ -23,8 +23,6 @@ public class Order {
 	
 	@OneToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "c_id")
-	//@JsonIgnoreProperties("order")
-	@Column(name="o_c_id")
 	private long o_c_id;
 
 	public long getO_id() {

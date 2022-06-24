@@ -17,7 +17,7 @@ public interface CustomerService {
 	 	
 	 	Customer getCustomerById(long id) throws ResourceNotFoundException;
 	 	
-	 	void deleteAllCustomer();
+	 	void deleteAllCustomers();
 	 	
 	 	void deleteCustomerById(long id);
 

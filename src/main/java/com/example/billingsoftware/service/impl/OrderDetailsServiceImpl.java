@@ -2,43 +2,43 @@ package com.example.billingsoftware.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.billingsoftware.entity.OrderDetails;
 import com.example.billingsoftware.exception.ResourceNotFoundException;
+import com.example.billingsoftware.repository.OrderDetailsRepository;
 import com.example.billingsoftware.service.OrderDetailsService;
 
 @Service
 public class OrderDetailsServiceImpl implements OrderDetailsService {
-
+	@Autowired
+	private OrderDetailsRepository orderDetailsRepository;
+	
 	@Override
 	public List<OrderDetails> getAllOrderDetailsById() {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDetailsRepository.findAll();
 	}
 
 	@Override
 	public List<OrderDetails> getAllOrderDetailsByOrderId() {
-		// TODO Auto-generated method stub
+		// left to do coz of foreign key
 		return null;
 	}
 
 	@Override
 	public OrderDetails createOrderDetails(OrderDetails orderDetails) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDetailsRepository.save(orderDetails);
 	}
 
 	@Override
 	public OrderDetails getOrderDetailsById(long id) throws ResourceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDetailsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Order details does'nt exist with id: " + id));
 	}
 
 	@Override
 	public void deleteAllOrderDetails() {
-		// TODO Auto-generated method stub
-		
+		orderDetailsRepository.deleteAll();
 	}
 
 	@Override
@@ -49,14 +49,17 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 
 	@Override
 	public void deleteOrderDetailsById(long id) {
-		// TODO Auto-generated method stub
-		
+		orderDetailsRepository.deleteById(id);
 	}
 
 	@Override
 	public OrderDetails updateOrderDetails(long id, OrderDetails updatedOrderDetails) {
-		// TODO Auto-generated method stub
-		return null;
+		OrderDetails oldOrderDetails = getOrderDetailsById(id);
+		oldOrderDetails.setOd_o_id(updatedOrderDetails.getOd_o_id());
+		oldOrderDetails.setOd_p_id(updatedOrderDetails.getOd_p_id());
+		oldOrderDetails.setOd_quantity(updatedOrderDetails.getOd_quantity());
+		//subtotal will be recalculated with quantity*product_rate
+		return oldOrderDetails;
 	}
 
 }

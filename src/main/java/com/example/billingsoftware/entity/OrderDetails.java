@@ -29,7 +29,7 @@ public class OrderDetails {
 	private double od_quantity;
 	
 	@Column(name="od_subTotal")
-	private double od_subTotal;
+	private double od_subTotal; //subtotal will be calculated with quantity*product_rate
 	
 	@OneToOne(targetEntity = Order.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "o_id")

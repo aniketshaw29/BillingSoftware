@@ -2,49 +2,50 @@ package com.example.billingsoftware.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.billingsoftware.entity.Product;
 import com.example.billingsoftware.exception.ResourceNotFoundException;
+import com.example.billingsoftware.repository.ProductRepository;
 import com.example.billingsoftware.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+	@Autowired
+	ProductRepository productRepository;
 
 	@Override
 	public List<Product> getAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
+		return productRepository.findAll();
 	}
 
 	@Override
 	public Product createProduct(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+		return productRepository.save(product);
 	}
 
 	@Override
 	public Product getProductById(long id) throws ResourceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		return productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product does'nt exist with id: " + id));
 	}
 
 	@Override
 	public void deleteAllProducts() {
-		// TODO Auto-generated method stub
-		
+		productRepository.deleteAll();
 	}
 
 	@Override
 	public void deleteProductById(long id) {
-		// TODO Auto-generated method stub
-		
+		productRepository.deleteById(id);
 	}
 
 	@Override
 	public Product updateProduct(long id, Product updatedProduct) {
-		// TODO Auto-generated method stub
-		return null;
+		Product oldProduct = getProductById(id);
+		oldProduct.setP_name(updatedProduct.getP_name());
+		oldProduct.setP_rate(updatedProduct.getP_rate());
+		return oldProduct;
 	}
 
 }

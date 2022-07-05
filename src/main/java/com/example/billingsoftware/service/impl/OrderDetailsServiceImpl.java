@@ -43,8 +43,7 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 
 	@Override
 	public void deleteAllOrderDetailsByOrderId() {
-		// TODO Auto-generated method stub
-		
+		// left to do coz of foreign key
 	}
 
 	@Override

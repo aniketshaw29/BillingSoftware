@@ -2,49 +2,49 @@ package com.example.billingsoftware.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.billingsoftware.entity.Order;
 import com.example.billingsoftware.exception.ResourceNotFoundException;
+import com.example.billingsoftware.repository.OrderRepository;
 import com.example.billingsoftware.service.OrderService;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-
+	@Autowired
+	OrderRepository orderRepository;
+	
 	@Override
 	public List<Order> getAllOrder() {
-		// TODO Auto-generated method stub
-		return null;
+		return orderRepository.findAll();
 	}
 
 	@Override
 	public Order createOrder(Order order) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderRepository.save(order);
 	}
 
 	@Override
 	public Order getOrderById(long id) throws ResourceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		return orderRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Order does'nt exist with id: " + id));
 	}
 
 	@Override
 	public void deleteAllOrders() {
-		// TODO Auto-generated method stub
-		
+		orderRepository.deleteAll();
 	}
 
 	@Override
 	public void deleteOrderById(long id) {
-		// TODO Auto-generated method stub
-		
+		orderRepository.deleteById(id);
 	}
 
 	@Override
-	public Order updateCustomer(long id, Order updatedOrder) {
-		// TODO Auto-generated method stub
-		return null;
+	public Order updateCustomersID(long id, Order updatedOrder) {
+		Order oldOrder = getOrderById(id);
+		oldOrder.setO_c_id(updatedOrder.getO_c_id());
+		return oldOrder;
 	}
 
 }
